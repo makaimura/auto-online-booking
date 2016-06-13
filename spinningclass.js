@@ -59,7 +59,6 @@ casper.then(function(){
 // Click the HTML link to book.
 casper.then(function(){
   this.click('a[href^="/pc/program/rsv"]');
-
 });
 
 // Make sure the class name that you are booking by extrating it as a text. 

@@ -1,10 +1,10 @@
 // Create casper object
 var casper = require('casper').create({
     pageSettings: {
-        loadImages: true,
+        loadImages: false,
         loadPlugins: false
     },
-    logLevel: "debug",
+//    logLevel: "debug",
     verbose: true
 });
 
@@ -38,14 +38,12 @@ casper.then(function(){
 // Click the button to search.
 casper.then(function(){
   this.click('div.boxButton input');
-  this.wait(1000);
 });
 
 // Click the button to the page for the results of searching.  
 // Originally you choose some search criteria or filter conditions, but this time, leave them as default and search classes.
 casper.then(function(){
   this.click('input[onClick="return preSubmit();"]');
-  this.wait(1000);
 });
 
 // Check the name of class(es) listed on the table of search result(s) by extracting them as a text.

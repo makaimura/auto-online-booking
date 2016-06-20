@@ -21,6 +21,15 @@ casper.on('page.error', function(msg, trace){
     this.echo("Page Error: " + msg, "ERROR");
 });
 
+// Abort unnecessary request to external links.
+casper.on('navigation.requested', function(url, navigationType, navigationLocked, isMainFrame){
+  if(url.indexOf('mixi.jp') != -1 || url.indexOf('twitter.com') != -1){
+    this.page.navigationLocked = true;
+  }else{
+    this.page.naviagationLocked = false;
+  }
+});
+
 // Open the login page of a certain website. I have to be cagey about the name, but you'll recognize it at a glance...
 casper.start("https://i.tipness.co.jp/pc/auth/login", function(){
 	// and loggin in.
